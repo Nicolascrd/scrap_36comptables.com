@@ -44,7 +44,7 @@ def add2csv(liste):
     f.write(liste[2])
     f.write(',')
     f.write(liste[3])
-    f.write('\n')
+    f.write('\n')()
     f.close()
     return None
 
