@@ -13,6 +13,7 @@ import subprocess
 
 #départment a extraire
 DEPARTEMENT = "nord"
+MAX_PAGES = 9
 
 #fonction pour renvoyer l'adresse mail dans une phrase
 def get_email(chaine):
@@ -50,7 +51,7 @@ def add2csv(liste):
 
 driver = webdriver.Firefox()
 
-for j in range(1,9):
+for j in range(1,MAX_PAGES):
     try:
         url = 'https://36comptables.com/annuaire/' + DEPARTEMENT + '/' + str(j)
         driver.get(url)
@@ -59,7 +60,7 @@ for j in range(1,9):
     else:
         
         liste_pages = driver.find_elements_by_class_name('professional-name')
-        startpoint = 240 #pour pas prendre les premiers cabinets qui sont pas des bonnes adresses.
+        startpoint = 0
         print(len(liste_pages))
         for i in range(startpoint, len(liste_pages)):
             driver.get(url)
